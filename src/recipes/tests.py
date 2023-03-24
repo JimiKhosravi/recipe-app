@@ -26,3 +26,14 @@ class RecipeModelTest(TestCase):
         recipe = Recipe.objects.get(id=1)
         recipe_cookingtime = recipe._meta.get_field('cooking_time').help_text
         self.assertEqual(recipe_cookingtime, 'In minutes')
+
+    def test_get_absolute_url(self):
+        recipe = Recipe.objects.get(id=1)
+        # get_absolute_url() should take you to the detail page of recipe #1
+        # and load the URL /recipes/list/1
+        self.assertEqual(recipe.get_absolute_url(), '/recipes/list/1')
+
+    def test_difficulty_calculation(self):
+        # test to check calculate_difficulty() functionality
+        recipe = Recipe.objects.get(id=1)
+        self.assertEqual(recipe.calculate_difficulty(), 'Easy')

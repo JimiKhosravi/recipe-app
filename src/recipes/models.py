@@ -7,7 +7,8 @@ from django.shortcuts import reverse
 class Recipe (models.Model):
     name = models.CharField(max_length=120)
     cooking_time = models.FloatField(help_text='In minutes')
-    ingredients = models.CharField(max_length=350)
+    ingredients = models.CharField(
+        max_length=350, help_text='Ingredients must be separated by commas.')
     description = models.TextField()
     pic = models.ImageField(upload_to='recipes', default='no_picture.jpg')
 

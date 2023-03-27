@@ -1,16 +1,19 @@
+{% load static %}
+
+<link rel='stylesheet' type='text/css' href="{% static 'recipes/css/styles.css' %}">
 <h2 style="display: flex; justify-content: center; margin-top: 50px;">Details: {{object.name}}</h2>
 
 <center>
-  <b style="display: flex; justify-content: center; margin-top: 20px;">Name: </b> {{object.name}} <br>
+  <b class="header_2">Name: </b> {{object.name}} <br>
 
-  <b style="display: flex; justify-content: center; margin-top: 20px;">Cooking time (min): </b> {{object.cooking_time}}
+  <b class="header_2">Cooking time (min): </b> {{object.cooking_time}}
   <br>
 
-  <b style="display: flex; justify-content: center; margin-top: 20px;">Ingredients: </b> {{object.ingredients}} <br>
+  <b class="header_2">Ingredients: </b> {{object.ingredients}} <br>
 
-  <b style="display: flex; justify-content: center; margin-top: 20px;">Description: </b> {{object.description}} <br>
+  <b class="header_2">Description: </b> {{object.description}} <br>
 
-  <b style="display: flex; justify-content: center; margin-top: 20px;">Difficulty: </b> {{object.calculate_difficulty}}
+  <b class="header_2">Difficulty: </b> {{object.calculate_difficulty}}
   <br>
 
   <img src="{{object.pic.url}}" width="200" height="200" style="display: flex; margin-top: 40px;" />

@@ -1,23 +1,36 @@
-<h1 style="display: flex; justify-content: center; margin-top: 50px;">Recipes list</h1> {% comment%} HTML tag for
-heading {% endcomment%}
-<center>
-  <table border="1" cellpadding="5" cellspacing="5" width="600" height="150"> {% comment%} start of table {%
-    endcomment%}
-    <tr> {% comment%} the
-    <tr> tag adds a new row {% endcomment%}
-      <td align="center">Recipes Titles</td> {% comment%} the <td> tag adds a column {% endcomment%}
-      <td align="center">Recipes Images</td>
-    </tr>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>RecipeApp | Recipes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="{% static 'recipes/images/favicon.png' %}">
+  <!-- CSS CUSTOM -->
+  <link rel='stylesheet' type='text/css' href="{% static 'recipes/css/styles.css' %}">
+</head>
+
+<body class="body" style="margin-top: 15vh;">
+  <div class="nav-bar">
+    <a class="back-home_btn" href="/home"> Home </a>
+    <a href="{%url 'logout' %}" class="logout_btn">Logout</a>
+  </div>
+
+  <div class="recipe_grid">
     {% for object in object_list %} {% comment%} now go through the list element-by-element {% endcomment%}
-    <tr>
-      <td align="center"><a href="{{object.get_absolute_url}}"> {% comment%} add links to book names {% endcomment%}
-          {{object.name}}
-        </a></td> {% comment%} print the name of recipe {% endcomment%}
-      <td>
-        <center><img src="{{object.pic.url}}" width="150" height="150" /></center>
-      </td> {% comment%} display the picture of recipe
-      {% endcomment%}
-    </tr>
+    <div class="grid_item">
+      <h4><a class="recipe_name" href="{{object.get_absolute_url}}"> {% comment%} add links to recipe names {%
+          endcomment%}
+          {{object.name}} </a> {% comment%} print the name of recipe {% endcomment%} </h4>
+      <div style="margin-bottom: 10px;">
+        <b>Cooking Time: </b> {{object.cooking_time}} <br>
+        <b>Difficulty: </b> {{object.calculate_difficulty}} <br>
+      </div>
+      <img class="food_images" src="{{object.pic.url}}" /> {% comment%} display the picture of recipe {% endcomment%}
+    </div>
     {% endfor %}
-  </table>
-</center>
+  </div>
+
+</body>
+
+</html>

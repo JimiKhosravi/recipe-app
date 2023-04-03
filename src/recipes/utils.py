@@ -35,13 +35,19 @@ def get_chart(chart_type, data, **kwargs):
     # select chart_type based on user input from the form
     if chart_type == '#1':
         plt.bar(data['name'], data['cooking_time'])
+        plt.xlabel("Name")
+        plt.ylabel("Cooking Time")
 
     elif chart_type == '#2':
         labels = kwargs.get('labels')
         plt.pie(data['cooking_time'], labels=labels)
+        plt.title("Recipe and Cooking Time")
 
     elif chart_type == '#3':
         plt.plot(data['name'], data['cooking_time'])
+        plt.xlabel("Name")
+        plt.ylabel("Cooking Time")
+
     else:
         print('unknown chart type')
 

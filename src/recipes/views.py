@@ -46,14 +46,18 @@ def records(request):
         recipe_diff = request.POST.get('recipe_diff')  # read recipe_name
         chart_type = request.POST.get('chart_type')  # read recipe chart type
 
-        if recipe_diff == '#1':
-            recipe_diff = 'Easy'
-        if recipe_diff == '#2':
-            recipe_diff = 'Medium'
-        if recipe_diff == '#3':
-            recipe_diff = 'Intermediate'
-        if recipe_diff == '#4':
-            recipe_diff = 'Hard'
+        recipe_diff_data = {"#1": "Easy", "#2": "Medium",
+                            "#3": "Intermediate", "#4": "Hard"}
+        recipe_diff = recipe_diff_data[recipe_diff]
+
+        # if recipe_diff == '#1':
+        #     recipe_diff = 'Easy'
+        # if recipe_diff == '#2':
+        #     recipe_diff = 'Medium'
+        # if recipe_diff == '#3':
+        #     recipe_diff = 'Intermediate'
+        # if recipe_diff == '#4':
+        #     recipe_diff = 'Hard'
 
         qs = Recipe.objects.all()  # apply filter to extract data
         id_searched = []

@@ -74,7 +74,16 @@ def records(request):
             chart = get_chart(chart_type, recipe_df,
                               labels=recipe_df['name'].values)
 
-            recipe_df = recipe_df.to_html()  # convert the dataframe to HTML
+            # convert the dataframe to HTML
+            recipe_df = recipe_df.to_html()
+
+            for item in qs.values():
+                item_id = item["id"]
+                item_name = item["name"]
+                recipe_df = recipe_df.replace(
+                    f"<td>{item_name}</td>",
+                    f'<td><a href = "/recipes/list/{item_id}">{item_name}</td>'
+                )
 
     # print(recipe_df)
     # pack up data to be sent to template in the context dictionary

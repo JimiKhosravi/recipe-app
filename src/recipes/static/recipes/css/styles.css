@@ -38,10 +38,6 @@
   margin: 0 auto;
 }
 
-#logo {
-  border-radius: 3px;
-}
-
 .recipe_grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
